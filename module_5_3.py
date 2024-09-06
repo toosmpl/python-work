@@ -19,32 +19,50 @@ class House:
 
 
     def __eq__(self, other):
-        return self.number_of_flours == other.number_of_flours
+        if isinstance(other, House):
+            return self.number_of_flours == other.number_of_flours
+        elif isinstance(other, int):
+            return self.number_of_floors == other
 
     def __lt__(self, other):
-        return self.number_of_flours < other.number_of_flours
+        if isinstance(other, House):
+            return self.number_of_flours < other.number_of_flours
+        elif isinstance(other, int):
+            return self.number_of_floors == other
+
 
     def __le__(self, other):
-        return self.number_of_flours <= other.number_of_flours
+        if isinstance(other, House):
+            return self.number_of_flours <= other.number_of_flours
+        elif isinstance(other, int):
+            return self.number_of_floors == other
 
     def __gt__(self, other):
-        return self.number_of_flours > other.number_of_flours
-
+        if isinstance(other, House):
+            return self.number_of_flours > other.number_of_flours
+        elif isinstance(other, int):
+            return self.number_of_floors == other
     def __ge__(self, other):
-        return self.number_of_flours >= other.number_of_flours
+        if isinstance(other, House):
+            return self.number_of_flours >= other.number_of_flours
+        elif isinstance(other, int):
+            return self.number_of_floors == other
 
     def __ne__(self, other):
-        return self.number_of_flours != other.number_of_flours
+        if isinstance(other, House):
+            return self.number_of_flours != other.number_of_flours
+        elif isinstance(other, int):
+            return self.number_of_floors == other
 
     def __add__(self, value):
         self.number_of_flours += value
         return self
 
-    def __iadd__(self, other):
-        return self + other
+    def __iadd__(self, value):
+        return self.__add__(value)
 
-    def __radd__(self, other):
-        return self + other
+    def __radd__(self, value):
+        return self.__add__(value)
 
 
 h1 = House('ЖК Горский', 10)
